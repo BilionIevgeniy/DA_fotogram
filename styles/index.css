@@ -34,6 +34,10 @@ header {
 main {
   flex: 1;
   padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   h1 {
     font-size: 4.5rem;
     margin-bottom: 5rem;
@@ -46,10 +50,10 @@ main {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
   img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 25px;
     cursor: pointer;
@@ -81,7 +85,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
   a {
     cursor: pointer;
   }
@@ -101,13 +105,6 @@ footer {
   h3 {
     margin-bottom: 2rem;
   }
-  .footer_img {
-    width: 400px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 55px;
-    margin-bottom: 2rem;
-  }
 }
 
 .modal_content {
@@ -118,10 +115,10 @@ footer {
   background-color: var(--primary-color);
   padding: 4rem;
   border: 1px solid var(--secondary-color);
-  border-radius: 3rem;
+  border-radius: 30px;
   max-width: 600px;
   width: 100%;
-  height: 600px;
+  max-height: 600px;
 }
 
 .modal_header {
@@ -132,14 +129,12 @@ footer {
   margin-bottom: 2rem;
   button {
     background-color: transparent;
-    border: none;
     color: var(--secondary-color);
-    font-size: 1.5rem;
     cursor: pointer;
   }
 }
 
-.modal_img {
+.modal_main_img {
   width: 100%;
   height: 300px;
   object-fit: cover;
@@ -149,9 +144,7 @@ footer {
 
 .close_btn {
   background-color: transparent;
-  border: none;
   color: var(--secondary-color);
-  font-size: 1.5rem;
   cursor: pointer;
 }
 

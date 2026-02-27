@@ -64,7 +64,7 @@ function setModalContent(className, idx, src) {
             <img class="close_img" src="./assets/img/icons/close.png" />
           </button>
         </div>
-        <img class="modal_img" src="./assets/img/main_grid/${src}" />
+        <img class="modal_main_img" src="./assets/img/main_grid/${src}" />
         <div class="modal_footer">
           <button onclick="switchModalImg(${idx}, ${true})" class="btn_left">
             <img src="./assets/img/icons/Union.png" />
