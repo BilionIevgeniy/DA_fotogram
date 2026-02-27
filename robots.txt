@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: http://ievgenbilion.developerakademie.net/fotogram/sitemap.xml
