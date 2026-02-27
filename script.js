@@ -30,15 +30,11 @@ function render() {
 }
 
 function openModal(src, idx) {
-  document.body.innerHTML += /*html*/ `
-        <div class="modal" onclick="closeModal(event)">
-            
-        </div>
-      `;
+  document.body.innerHTML += `<div class="modal" onclick="closeModal()"></div>`;
   setModalContent("modal", idx, src);
 }
 
-function closeModal(e) {
+function closeModal() {
   const modal = document.querySelector(".modal");
   if (modal) {
     modal.remove();
@@ -61,25 +57,26 @@ function setModalContent(className, idx, src) {
   const modal = document.querySelector("." + className);
   if (modal) {
     modal.innerHTML = /*html*/ `
-  <div class="modal_content" onclick="event.stopPropagation()">
-    <div class="modal_header">
-      <h3>${src}</h3>
-      <button onclick="closeModal(event)" class="close_btn">
-        <img class="close_img" src="./assets/img/icons/close.png" />
-      </button>
-    </div>
-    <img class="modal_img" src="./assets/img/main_grid/${src}" />
-    <div class="modal_footer">
-      <button onclick="switchModalImg(${idx}, ${true})" class="btn_left">
-        <img src="./assets/img/icons/Union.png" />
-      </button>
-      <p class="modal_slides_info">
-        ${idx + 1} / ${images.length}
-      </p>
-      <button onclick="switchModalImg(${idx})" class="btn_right">
-        <img src="./assets/img/icons/Union.png" />
-      </button>
-    </div>
-  </div>`;
+      <div class="modal_content" onclick="event.stopPropagation()">
+        <div class="modal_header">
+          <h3>${src}</h3>
+          <button onclick="closeModal()" class="close_btn">
+            <img class="close_img" src="./assets/img/icons/close.png" />
+          </button>
+        </div>
+        <img class="modal_img" src="./assets/img/main_grid/${src}" />
+        <div class="modal_footer">
+          <button onclick="switchModalImg(${idx}, ${true})" class="btn_left">
+            <img src="./assets/img/icons/Union.png" />
+          </button>
+          <p class="modal_slides_info">
+            ${idx + 1} / ${images.length}
+          </p>
+          <button onclick="switchModalImg(${idx})" class="btn_right">
+            <img src="./assets/img/icons/Union.png" />
+          </button>
+        </div>
+      </div>
+    `;
   }
 }
