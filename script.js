@@ -122,7 +122,7 @@ function generateGaleryImgTemplate(idx, src, titel) {
             tabindex="0" 
             role="button"
             aria-label="Open photo">
-              <img src="./assets/img/main_grid/${src}" alt='${titel} image'/>
+              <img src="./assets/img/main_grid/${src}" alt='${titel}'/>
           </div>
         `;
 }
@@ -137,7 +137,7 @@ function generateModalContentTemplate(idx, titel, src) {
           </button>
         </header>
         <div class="modal_main_img">
-          <img src="./assets/img/main_grid/${src}" alt="${titel} image"/>
+          <img src="./assets/img/main_grid/${src}" alt="${titel}"/>
         </div>
         <div class="modal_footer">
           <button onclick="switchModalImg(${idx}, ${true})" class="btn_left" aria-label="Open prev photo">
