@@ -1,50 +1,50 @@
 const images = [
   {
-    src: "alaska.jpg",
+    src: "alaska",
     titel: "Alaska",
   },
   {
-    src: "moorente.jpg",
+    src: "moorente",
     titel: "Moorente",
   },
   {
-    src: "anime.jpg",
+    src: "anime",
     titel: "Anime",
   },
   {
-    src: "sea.jpg",
+    src: "sea",
     titel: "Sea",
   },
   {
-    src: "atmosphere.png",
+    src: "atmosphere",
     titel: "Atmosphere",
   },
   {
-    src: "snow-bunting.jpg",
+    src: "snow-bunting",
     titel: "Anow Bunting",
   },
   {
-    src: "blue-tit.jpg",
+    src: "blue-tit",
     titel: "Blue Tit",
   },
   {
-    src: "snow-leopard-cubs.jpg",
+    src: "snow-leopard-cubs",
     titel: "Snow Leopard Cubs",
   },
   {
-    src: "hurricane.jpg",
+    src: "hurricane",
     titel: "Hurricane",
   },
   {
-    src: "travel.jpg",
+    src: "travel",
     titel: "Travel",
   },
   {
-    src: "lake.jpg",
+    src: "lake",
     titel: "Lake",
   },
   {
-    src: "winter.jpg",
+    src: "winter",
     titel: "Winter",
   },
 ];
@@ -121,8 +121,15 @@ function generateGaleryImgTemplate(idx, src, titel) {
             class="gallery-item" 
             tabindex="0" 
             role="button"
-            aria-label="Open photo">
-              <img src="./assets/img/main_grid/${src}" alt='${titel}'/>
+            aria-label="Open photo"
+          >
+            <img 
+              loading="lazy"
+              width="150" 
+              height="150" 
+              src="./assets/img/main_grid/${src}.webp" 
+              alt='${titel}'
+            />
           </div>
         `;
 }
@@ -137,7 +144,13 @@ function generateModalContentTemplate(idx, titel, src) {
           </button>
         </header>
         <div class="modal_main_img">
-          <img src="./assets/img/main_grid/${src}" alt="${titel}"/>
+          <img 
+            fetchpriority="high"
+            width="300" 
+            height="150"  
+            src="./assets/img/main_grid_compress/${src}.jpg" 
+            alt="${titel}"
+          />
         </div>
         <div class="modal_footer">
           <button onclick="switchModalImg(${idx}, ${true})" class="btn_left" aria-label="Open prev photo">
