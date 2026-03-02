@@ -62,7 +62,7 @@ function setModalContent(className, idx, src) {
     modal.innerHTML = /*html*/ `
       <div class="modal_content" onclick="event.stopPropagation()">
         <header class="modal_header">
-          <h3>${src}</h3>
+          <p>${src}</p>
           <button onclick="closeModal()" class="close_btn">
             <img class="close_img" src="./assets/img/icons/close.png" alt="close modal"/>
           </button>
