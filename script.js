@@ -127,7 +127,7 @@ function generateGaleryImgTemplate(idx, src, titel) {
               loading="lazy"
               width="150" 
               height="150" 
-              src="./assets/img/main_grid/${src}.webp" 
+              src="./assets/img/main_grid_compress/${src}.jpg" 
               alt='${titel}'
             />
           </div>
@@ -148,7 +148,7 @@ function generateModalContentTemplate(idx, titel, src) {
             fetchpriority="high"
             width="300" 
             height="150"  
-            src="./assets/img/main_grid_compress/${src}.jpg" 
+            src="./assets/img/main_grid/${src}.webp" 
             alt="${titel}"
           />
         </div>
@@ -168,5 +168,5 @@ function generateModalContentTemplate(idx, titel, src) {
 }
 
 function generateModalWrapperTemplate() {
-  return `<div class="modal" onclick="closeModal()"></div>`;
+  return `<dialog class="modal" onclick="closeModal()"></dialog>`;
 }
