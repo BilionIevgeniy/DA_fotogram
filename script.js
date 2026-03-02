@@ -70,7 +70,7 @@ function openModalOnEnter(event, src, idx) {
 }
 
 function openModal(idx) {
-  document.body.innerHTML += `<div class="modal" onclick="closeModal()"></div>`;
+  document.body.innerHTML += generateModalWrapperTemplate();
   document.addEventListener("keydown", handleKeyboard);
   setModalContent("modal", idx);
   newModalImgIdx = idx;
@@ -150,4 +150,8 @@ function generateModalContentTemplate(idx, titel, src) {
         </div>
       </div>
     `;
+}
+
+function generateModalWrapperTemplate() {
+  return `<div class="modal" onclick="closeModal()"></div>`;
 }
