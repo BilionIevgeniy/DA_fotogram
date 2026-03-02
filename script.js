@@ -136,7 +136,9 @@ function generateModalContentTemplate(idx, titel, src) {
             <img class="close_img" src="./assets/img/icons/close.png" alt="close modal"/>
           </button>
         </header>
-        <img class="modal_main_img" src="./assets/img/main_grid/${src}" alt="${titel} image"/>
+        <div class="modal_main_img">
+          <img src="./assets/img/main_grid/${src}" alt="${titel} image"/>
+        </div>
         <div class="modal_footer">
           <button onclick="switchModalImg(${idx}, ${true})" class="btn_left" aria-label="Open prev photo">
             <img src="./assets/img/icons/Union.png" alt="Open prev photo"/>
