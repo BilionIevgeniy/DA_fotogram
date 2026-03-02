@@ -144,8 +144,7 @@ function generateModalContentTemplate(idx, titel, src) {
           </button>
         </header>
         <div class="modal_main_img">
-          <img 
-            fetchpriority="high"
+          <img
             width="300" 
             height="150"  
             src="./assets/img/main_grid/${src}.webp" 
