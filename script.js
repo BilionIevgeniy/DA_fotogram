@@ -18,15 +18,28 @@ function render() {
   const container = document.querySelector(".main_content");
   if (container) {
     const imgContent = images
-      .map(
-        (src, idx) => /*html*/ `
-          <div onclick="openModal('${src}', ${idx})" class="gallery-item">
+      .map((src, idx) => {
+        return /*html*/ `
+          <div 
+            onclick="openModal('${src}', ${idx})"
+            onkeydown="openModalOnEnter(event, '${src}', ${idx})"
+            class="gallery-item" 
+            tabindex="0" 
+            role="button"
+            aria-label="Open photo">
               <img src="./assets/img/main_grid/${src}"/>
           </div>
-        `,
-      )
+        `;
+      })
       .join("");
     container.innerHTML = imgContent;
+  }
+}
+
+function openModalOnEnter(event, src, idx) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault(); // чтобы страница не скроллилась от пробела
+    openModal(src, idx);
   }
 }
 
