@@ -12,6 +12,7 @@ const images = [
   "lake-2896379_1280.jpg",
   "winter-1675197_1280.jpg",
 ];
+let newModalImgIdx = 0;
 
 function render() {
   const container = document.querySelector(".main_content");
@@ -31,7 +32,9 @@ function render() {
 
 function openModal(src, idx) {
   document.body.innerHTML += `<div class="modal" onclick="closeModal()"></div>`;
+  document.addEventListener("keydown", handleKeyboard);
   setModalContent("modal", idx, src);
+  newModalImgIdx = idx;
 }
 
 function closeModal() {
@@ -42,15 +45,14 @@ function closeModal() {
 }
 
 function switchModalImg(idx, isPrew) {
-  let next;
   if (idx === 0 && isPrew) {
-    next = images.length - 1;
+    newModalImgIdx = images.length - 1;
   } else if (idx === images.length - 1 && !isPrew) {
-    next = 0;
+    newModalImgIdx = 0;
   } else {
-    next = isPrew ? idx - 1 : idx + 1;
+    newModalImgIdx = isPrew ? idx - 1 : idx + 1;
   }
-  setModalContent("modal", next, images[next]);
+  setModalContent("modal", newModalImgIdx, images[newModalImgIdx]);
 }
 
 function setModalContent(className, idx, src) {
@@ -58,25 +60,35 @@ function setModalContent(className, idx, src) {
   if (modal) {
     modal.innerHTML = /*html*/ `
       <div class="modal_content" onclick="event.stopPropagation()">
-        <div class="modal_header">
+        <header class="modal_header">
           <h3>${src}</h3>
           <button onclick="closeModal()" class="close_btn">
-            <img class="close_img" src="./assets/img/icons/close.png" />
+            <img class="close_img" src="./assets/img/icons/close.png" alt="close modal"/>
           </button>
-        </div>
-        <img class="modal_main_img" src="./assets/img/main_grid/${src}" />
+        </header>
+        <img class="modal_main_img" src="./assets/img/main_grid/${src}" alt="modal img"/>
         <div class="modal_footer">
           <button onclick="switchModalImg(${idx}, ${true})" class="btn_left">
-            <img src="./assets/img/icons/Union.png" />
+            <img src="./assets/img/icons/Union.png" alt="left arrow"/>
           </button>
           <p class="modal_slides_info">
             ${idx + 1} / ${images.length}
           </p>
           <button onclick="switchModalImg(${idx})" class="btn_right">
-            <img src="./assets/img/icons/Union.png" />
+            <img src="./assets/img/icons/Union.png" alt="right arrow"/>
           </button>
         </div>
       </div>
     `;
+  }
+}
+
+function handleKeyboard(event) {
+  if (event.key === "Escape") {
+    closeModal();
+  } else if (event.key === "ArrowRight") {
+    switchModalImg(newModalImgIdx);
+  } else if (event.key === "ArrowLeft") {
+    switchModalImg(newModalImgIdx, true);
   }
 }
