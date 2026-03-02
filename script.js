@@ -40,6 +40,7 @@ function openModal(src, idx) {
 function closeModal() {
   const modal = document.querySelector(".modal");
   if (modal) {
+    document.removeEventListener("keydown", handleKeyboard);
     modal.remove();
   }
 }
