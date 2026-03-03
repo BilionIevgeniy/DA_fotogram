@@ -65,22 +65,37 @@ function render() {
 function openModalOnEnter(event, src, idx) {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault(); // чтобы страница не скроллилась от пробела
-    openModal(idx);
+    openModal(idx, event);
   }
 }
 
-function openModal(idx) {
-  document.body.innerHTML += generateModalWrapperTemplate();
-  document.addEventListener("keydown", handleKeyboard);
-  setModalContent("modal", idx);
-  newModalImgIdx = idx;
+function openModal(idx, event) {
+  const wrapper = generateModalWrapperTemplate();
+  const x = event.clientX;
+  const y = event.clientY;
+
+  document.body.insertAdjacentHTML("beforeend", wrapper);
+  const modal = document.querySelector(".modal");
+
+  setTimeout(() => {
+    modal.style.transformOrigin = `${x}px ${y}px`;
+    modal.classList.add("show");
+    document.addEventListener("keydown", handleKeyboard);
+    setModalContent("modal", idx);
+    newModalImgIdx = idx;
+  }, 10);
 }
 
 function closeModal() {
   const modal = document.querySelector(".modal");
+
   if (modal) {
     document.removeEventListener("keydown", handleKeyboard);
-    modal.remove();
+    modal.classList.remove("show");
+
+    setTimeout(() => {
+      modal.remove();
+    }, 300);
   }
 }
 
@@ -116,7 +131,7 @@ function handleKeyboard(event) {
 function generateGaleryImgTemplate(idx, src, titel) {
   return /*html*/ `
           <div 
-            onclick="openModal(${idx})"
+            onclick="openModal(${idx}, event)"
             onkeydown="openModalOnEnter(event, '${src}', ${idx})"
             class="gallery-item" 
             tabindex="0" 
